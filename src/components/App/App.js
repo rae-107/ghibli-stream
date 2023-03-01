@@ -1,11 +1,15 @@
+import { Routes, Route} from 'react-router-dom'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
+    <main className="App">
+      <Routes>
+        <Route path='/' />
+        <Route path='/details/:id' />
+        <Route path='*' />
+      </Routes>
+    </main>
   );
 }
 
