@@ -1,0 +1,12 @@
+@use '../../../abstract/variables' as *;
+
+.Header {
+  background-color: $brownColor;
+  height: 20vh;
+}
+
+.logo {
+  width: 20vw;
+  margin: 10px;
+  height: 18vh;
+}

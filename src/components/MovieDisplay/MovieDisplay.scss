@@ -1,0 +1,16 @@
+@use '../../../abstract/variables' as *;
+
+.MovieDisplay {
+  height: 80vh;
+  width: 100%;
+  margin-right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.center-movie-container {
+  background-color: $creamColor;
+  width: 70vw;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
