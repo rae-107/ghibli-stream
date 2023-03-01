@@ -12,7 +12,7 @@ const style = {
 const MovieDisplay = () => {
   return (
     <section style={style} className="MovieDisplay">
-      
+      <section className="center-movie-container"></section>
     </section>
   )
 }
