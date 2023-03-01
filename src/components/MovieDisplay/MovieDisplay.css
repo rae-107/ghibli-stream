@@ -2,4 +2,13 @@
   height: 80vh;
   width: 100%;
   margin-right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.center-movie-container {
+  background-color: rgba(255, 254, 235, 0.6);
+  width: 70vw;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }/*# sourceMappingURL=MovieDisplay.css.map */
