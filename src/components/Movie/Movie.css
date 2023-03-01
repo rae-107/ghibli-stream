@@ -1,0 +1,15 @@
+.Movie {
+  width: 15vw;
+  height: 20vh;
+  display: flex;
+}
+
+.small-poster {
+  width: 15vw;
+  height: 18vh;
+}
+
+.small-title {
+  width: 15vw;
+  height: 2vh;
+}/*# sourceMappingURL=Movie.css.map */
