@@ -105,12 +105,12 @@ const MovieDetail = ({
             )}
             {rottenTomatoes && (
               <p>
-                <strong>Rotten Tomatoes:</strong> ${rottenTomatoes}
+                <strong>Rotten Tomatoes:</strong> {rottenTomatoes}
               </p>
             )}
             {imdb && (
               <p>
-                <strong>IMDB:</strong> ${imdb}
+                <strong>IMDB:</strong> {imdb}
               </p>
             )}
           </section>
