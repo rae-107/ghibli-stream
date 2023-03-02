@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import backdrop from "../../assests/spitited-away-background.png";
+import backdrop from "../../assests/forest.png";
 import "./MovieDisplay.css";
 import { apiCalls } from "../../apiCalls";
 import Movie from "../Movie/Movie";
+import { convertObjectToArray } from '../../util'
 
 const style = {
   backgroundImage: `url(${backdrop})`,
@@ -11,17 +12,20 @@ const style = {
 };
 
 const MovieDisplay = () => {
-  const [movies, setMovies] = useState({});
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    apiCalls().then((data) => setMovies(data));
+    apiCalls().then((data) => setMovies(convertObjectToArray(data)));
     console.log(movies)
-    console.log(Object.keys(movies));
-  }, [movies]);
+  }, [movies.length]);
+
+  const displayMovies = (movies) => {
+    return movies.map((movie, index) => <Movie key={index} id={index} poster={movie.poster} title={movie.title} />)
+  }
 
   return (
     <section style={style} className="MovieDisplay">
-      <section className="center-movie-container"></section>
+      {movies.length && <section className="center-movie-container">{displayMovies(movies)}</section>}
       
     </section>
   );
