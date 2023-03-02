@@ -1,13 +1,24 @@
 import React from "react";
-import './Movie.css'
+import "./Movie.css";
+import { NavLink } from "react-router-dom";
 
-const Movie = ({ id, title, poster}) => {
+const Movie = ({ id, title, poster, chooseMovie }) => {
   return (
-    <section className="Movie" >
-      <img src={poster} alt={`Click for more information about ${title}`} className="small-poster" />
-      <h3 className="small-title" >{title}</h3>
-    </section>
-  )
-}
+    <NavLink to={'/details'}>
+      <section
+        onClick={(event) => chooseMovie(event.target.id)}
+        className="Movie"
+      >
+        <img
+          src={poster}
+          id={id}
+          alt={`Click for more information about ${title}`}
+          className="small-poster"
+        />
+        <h3 className="small-title">{title}</h3>
+      </section>
+    </NavLink>
+  );
+};
 
-export default Movie
+export default Movie;
