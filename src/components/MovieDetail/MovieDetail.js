@@ -10,6 +10,8 @@ const style = {
 };
 
 const MovieDetail = ({
+  addFavorite,
+  addWatched,
   title,
   poster,
   genre,
@@ -33,8 +35,8 @@ const MovieDetail = ({
             <div className="top-movie-info">
               <h2>{title}</h2>
               <div>
-                <button>Add To Favorites</button>
-                <button>Add To Watched</button>
+                <button id={title} onClick={event => addFavorite(event.target.id)}>Add To Favorites</button>
+                <button id={title} onClick={event => addWatched(event.target.id)}>Add To Watched</button>
               </div>
             </div>
             {genre && (
