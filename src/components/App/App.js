@@ -20,20 +20,34 @@ function App() {
   }, [movies.length]);
 
   const chooseMovie = (id) => {
-    selectedMovie.title && setSelectedMovie({})
+    selectedMovie.title && setSelectedMovie({});
     const findChoosenMovie = movies.find((movie, index) => index === +id);
     setSelectedMovie(findChoosenMovie);
   };
 
-  const addFavorite = (title) => {
-    const findFavoriteMovie = movies.find(movie => movie.title === title)
-    setFavoriteMovies([...favoriteMovies, findFavoriteMovie])
+  const toggleFavorite = (title, action) => {
+    if (action === "Add") {
+      const findFavoriteMovie = movies.find((movie) => movie.title === title);
+      setFavoriteMovies([...favoriteMovies, findFavoriteMovie]);
+    } else {
+      const removeFavoritedMovie = favoriteMovies.filter(
+        (movie) => movie.title !== title
+      );
+      setFavoriteMovies(removeFavoritedMovie);
+    }
   };
 
-  const addWatched = (title) => {
-    const findWatchedMovie = movies.find(movie => movie.title === title)
-    setWatchedMovies([...watchedMovies, findWatchedMovie])
-  }
+  const toggleWatched = (title, action) => {
+    if (action === "Add") {
+      const findWatchedMovie = movies.find((movie) => movie.title === title);
+      setWatchedMovies([...watchedMovies, findWatchedMovie]);
+    } else {
+      const removeWatchedMovie = watchedMovies.filter(
+        (movie) => movie.title !== title
+      );
+      setWatchedMovies(removeWatchedMovie);
+    }
+  };
 
   return (
     <main className="App">
@@ -47,8 +61,10 @@ function App() {
           element={
             selectedMovie.title && (
               <MovieDetail
-                addFavorite={addFavorite}
-                addWatched={addWatched}
+                favoriteMovies={favoriteMovies}
+                watchedMovies={watchedMovies}
+                toggleFavorite={toggleFavorite}
+                toggleWatched={toggleWatched}
                 title={selectedMovie.title}
                 poster={selectedMovie.poster}
                 genre={selectedMovie.genre}
