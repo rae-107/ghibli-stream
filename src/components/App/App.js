@@ -15,7 +15,6 @@ function App() {
 
   useEffect(() => {
     apiCalls().then((data) => setMovies(convertObjectToArray(data)));
-    console.log(movies);
     // eslint-disable-next-line
   }, [movies.length]);
 
@@ -38,14 +37,23 @@ function App() {
   };
 
   const toggleWatched = (title, action) => {
+    const determineUnwatchedMovies = [];
     if (action === "Add") {
       const findWatchedMovie = movies.find((movie) => movie.title === title);
       setWatchedMovies([...watchedMovies, findWatchedMovie]);
+      movies.forEach((movie) =>
+        !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : ""
+      );
+      setunwatchedMovies(determineUnwatchedMovies);
     } else {
       const removeWatchedMovie = watchedMovies.filter(
         (movie) => movie.title !== title
       );
       setWatchedMovies(removeWatchedMovie);
+      movies.forEach((movie) =>
+        !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : ""
+      );
+      setunwatchedMovies(determineUnwatchedMovies);
     }
   };
 
@@ -83,6 +91,10 @@ function App() {
         />
         <Route path="/favorites" element={<Main movies={favoriteMovies} />} />
         <Route path="/watched" element={<Main movies={watchedMovies} />} />
+        <Route
+          path="/watch%20list"
+          element={<Main movies={unwatchedMovies} />}
+        />
         <Route path="*" />
       </Routes>
     </main>
