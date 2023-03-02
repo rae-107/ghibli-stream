@@ -20,9 +20,20 @@ function App() {
   }, [movies.length]);
 
   const chooseMovie = (id) => {
+    selectedMovie.title && setSelectedMovie({})
     const findChoosenMovie = movies.find((movie, index) => index === +id);
     setSelectedMovie(findChoosenMovie);
   };
+
+  const addFavorite = (title) => {
+    const findFavoriteMovie = movies.find(movie => movie.title === title)
+    setFavoriteMovies([...favoriteMovies, findFavoriteMovie])
+  };
+
+  const addWatched = (title) => {
+    const findWatchedMovie = movies.find(movie => movie.title === title)
+    setWatchedMovies([...watchedMovies, findWatchedMovie])
+  }
 
   return (
     <main className="App">
@@ -31,7 +42,29 @@ function App() {
           path="/"
           element={<Main chooseMovie={chooseMovie} movies={movies} />}
         />
-        <Route path="/details/:id" element={selectedMovie.title && <MovieDetail title={selectedMovie.title} poster={selectedMovie.poster} genre={selectedMovie.genre} rating={selectedMovie.rating} release={selectedMovie.release} music={selectedMovie.music} runtime={selectedMovie.runtimeMinutes} budget={selectedMovie.budgetUSD} boxOffice={selectedMovie.boxOfficeUSD} synopsis={selectedMovie.synopsis} rottenTomatoes={selectedMovie.reviews.rottenTomatoes} imdb={selectedMovie.reviews.imdb} />} />
+        <Route
+          path="/details/:id"
+          element={
+            selectedMovie.title && (
+              <MovieDetail
+                addFavorite={addFavorite}
+                addWatched={addWatched}
+                title={selectedMovie.title}
+                poster={selectedMovie.poster}
+                genre={selectedMovie.genre}
+                rating={selectedMovie.rating}
+                release={selectedMovie.release}
+                music={selectedMovie.music}
+                runtime={selectedMovie.runtimeMinutes}
+                budget={selectedMovie.budgetUSD}
+                boxOffice={selectedMovie.boxOfficeUSD}
+                synopsis={selectedMovie.synopsis}
+                rottenTomatoes={selectedMovie.reviews.rottenTomatoes}
+                imdb={selectedMovie.reviews.imdb}
+              />
+            )
+          }
+        />
         <Route path="/favorites" element={<Main movies={favoriteMovies} />} />
         <Route path="/watched" element={<Main movies={watchedMovies} />} />
         <Route path="*" />
