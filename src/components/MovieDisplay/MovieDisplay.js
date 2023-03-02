@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import backdrop from "../../assests/forest.png";
 import "./MovieDisplay.css";
-import { apiCalls } from "../../apiCalls";
 import Movie from "../Movie/Movie";
-import { convertObjectToArray } from '../../util'
 
 const style = {
   backgroundImage: `url(${backdrop})`,
@@ -11,22 +9,26 @@ const style = {
   backgroundRepeat: "no-repeat",
 };
 
-const MovieDisplay = () => {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    apiCalls().then((data) => setMovies(convertObjectToArray(data)));
-    console.log(movies)
-  }, [movies.length]);
-
+const MovieDisplay = ({ movies, chooseMovie }) => {
   const displayMovies = (movies) => {
-    return movies.map((movie, index) => <Movie key={index} id={index} poster={movie.poster} title={movie.title} />)
-  }
+    return movies.map((movie, index) => (
+      <Movie
+        key={index}
+        id={index}
+        poster={movie.poster}
+        title={movie.title}
+        chooseMovie={chooseMovie}
+      />
+    ));
+  };
 
   return (
     <section style={style} className="MovieDisplay">
-      {movies.length && <section className="center-movie-container">{displayMovies(movies)}</section>}
-      
+      {movies.length && (
+        <section className="center-movie-container">
+          {displayMovies(movies)}
+        </section>
+      )}
     </section>
   );
 };

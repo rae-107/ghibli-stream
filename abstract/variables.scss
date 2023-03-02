@@ -1,3 +1,12 @@
 $brownColor: #D2B48C;
 $creamColor: rgba(255, 254, 235, .6);
 $mainFont: 'Cormorant Garamond', serif;
+
+@mixin buttons {
+  background-color: $brownColor;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}

@@ -1,14 +1,14 @@
-import MovieDisplay from '../MovieDisplay/MovieDisplay'
-import Header from '../Header/Header'
-import React from 'react'
+import MovieDisplay from "../MovieDisplay/MovieDisplay";
+import Header from "../Header/Header";
+import React from "react";
 
-const Main = () => {
+const Main = ({ chooseMovie, movies }) => {
   return (
-    <section className='Main' >
+    <section className="Main">
       <Header />
-      <MovieDisplay />
+      <MovieDisplay chooseMovie={chooseMovie} movies={movies} />
     </section>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;
