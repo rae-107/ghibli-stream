@@ -1,10 +1,11 @@
 import React from "react";
+import './Movie.css'
 
-const Movie = () => {
+const Movie = ({ id, title, poster}) => {
   return (
     <section className="Movie" >
-      <img className="small-poster" />
-      <h3 className="small-title" > Title</h3>
+      <img src={poster} alt={`Click for more information about ${title}`} className="small-poster" />
+      <h3 className="small-title" >{title}</h3>
     </section>
   )
 }
