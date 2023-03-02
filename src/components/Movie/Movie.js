@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Movie = ({ id, title, poster, chooseMovie }) => {
   return (
-    <NavLink to={'/details'}>
+    <NavLink to={`/details/${title}`}>
       <section
         onClick={(event) => chooseMovie(event.target.id)}
         className="Movie"

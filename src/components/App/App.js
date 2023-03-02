@@ -31,7 +31,7 @@ function App() {
           path="/"
           element={<Main chooseMovie={chooseMovie} movies={movies} />}
         />
-        <Route path="/details" element={selectedMovie.title && <MovieDetail title={selectedMovie.title} poster={selectedMovie.poster} genre={selectedMovie.genre} rating={selectedMovie.rating} release={selectedMovie.release} music={selectedMovie.music} runtime={selectedMovie.runtime} budget={selectedMovie.budgetUSD} boxOffice={selectedMovie.bosOfficeUSD} synopsis={selectedMovie.synopsis} rottenTomatoes={selectedMovie.reviews.rottenTomatoes} imdb={selectedMovie.reviews.imdb} />} />
+        <Route path="/details/:id" element={selectedMovie.title && <MovieDetail title={selectedMovie.title} poster={selectedMovie.poster} genre={selectedMovie.genre} rating={selectedMovie.rating} release={selectedMovie.release} music={selectedMovie.music} runtime={selectedMovie.runtime} budget={selectedMovie.budgetUSD} boxOffice={selectedMovie.bosOfficeUSD} synopsis={selectedMovie.synopsis} rottenTomatoes={selectedMovie.reviews.rottenTomatoes} imdb={selectedMovie.reviews.imdb} />} />
         <Route path="*" />
       </Routes>
     </main>

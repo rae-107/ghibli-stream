@@ -14,7 +14,7 @@ const MovieDetail = ({ title, poster, genre, rating, release, music, runtime, bu
     <section className="MovieDetail" style={style} >
       <Header />
       <section className="center-movie-container">
-          <img src={poster} className='poster' />
+          <img src={poster} className='large-poster' />
         <div>
         </div>
       </section>
