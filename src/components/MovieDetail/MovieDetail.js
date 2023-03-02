@@ -10,8 +10,10 @@ const style = {
 };
 
 const MovieDetail = ({
-  addFavorite,
-  addWatched,
+  favoriteMovies,
+  watchedMovies,
+  toggleFavorite,
+  toggleWatched,
   title,
   poster,
   genre,
@@ -25,18 +27,45 @@ const MovieDetail = ({
   rottenTomatoes,
   imdb,
 }) => {
+  const checkLists = (movieTitle, type) => {
+    if (type === "favorite") {
+      const isList = favoriteMovies.find((movie) => movie.title === movieTitle);
+      return isList ? "Remove" : "Add";
+    } else {
+      const isList = watchedMovies.find((movie) => movie.title === movieTitle);
+      return isList ? "Remove" : "Add";
+    }
+  };
+
   return (
     <section className="MovieDetail" style={style}>
       <Header />
       <section className="center-movie-detail">
         <section className="poster-with-info">
-          <img src={poster} className="large-poster" />
+          <img alt={title} src={poster} className="large-poster" />
           <section className="movie-info">
             <div className="top-movie-info">
               <h2>{title}</h2>
               <div>
-                <button id={title} onClick={event => addFavorite(event.target.id)}>Add To Favorites</button>
-                <button id={title} onClick={event => addWatched(event.target.id)}>Add To Watched</button>
+                <button
+                  id={title}
+                  onClick={(event) =>
+                    toggleFavorite(
+                      event.target.id,
+                      checkLists(title, "favorite")
+                    )
+                  }
+                >
+                  {checkLists(title, "favorite")} To Favorites
+                </button>
+                <button
+                  id={title}
+                  onClick={(event) =>
+                    toggleWatched(event.target.id, checkLists(title, "watched"))
+                  }
+                >
+                  {checkLists(title, "watched")} To Watched
+                </button>
               </div>
             </div>
             {genre && (
