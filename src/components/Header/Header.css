@@ -2,6 +2,7 @@
   background-color: #D2B48C;
   height: 20vh;
   width: 100vw;
+  display: flex;
 }
 
 .logo {
