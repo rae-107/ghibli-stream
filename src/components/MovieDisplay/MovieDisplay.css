@@ -1,9 +1,9 @@
 .MovieDisplay {
-  height: 80vh;
+  height: 260vh;
   width: 100%;
-  margin-right: 0;
   display: flex;
   justify-content: center;
+  overflow-y: scroll;
 }
 
 .center-movie-container {
@@ -11,4 +11,7 @@
   width: 70vw;
   display: grid;
   grid-template-columns: auto auto auto auto;
+  justify-content: space-evenly;
+  row-gap: 10px;
+  align-content: space-around;
 }/*# sourceMappingURL=MovieDisplay.css.map */
