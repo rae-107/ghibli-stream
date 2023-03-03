@@ -10,6 +10,7 @@
   width: 70vw;
   display: grid;
   grid-template-columns: auto;
+  row-gap: 10px;
   padding: 10px;
   justify-content: space-evenly;
   overflow-y: scroll;
@@ -25,7 +26,7 @@
     grid-template-columns: auto auto auto;
   }
 }
-@media screen and (min-width: 1450px) {
+@media screen and (min-width: 1400px) {
   .center-movie-container {
     grid-template-columns: auto auto auto auto;
   }
