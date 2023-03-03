@@ -2,15 +2,17 @@ import React from "react";
 import Header from "../Header/Header";
 import backdrop from "../../assests/spirited-away-background.png";
 import "./MovieDetail.css";
+import { useParams } from "react-router-dom";
 
 const style = {
   backgroundImage: `url(${backdrop})`,
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
-  backgroundAttachment: 'fixed'
+  backgroundAttachment: "fixed",
 };
 
 const MovieDetail = ({
+  chooseMovie,
   favoriteMovies,
   watchedMovies,
   toggleFavorite,
@@ -28,6 +30,9 @@ const MovieDetail = ({
   rottenTomatoes,
   imdb,
 }) => {
+  const { movieTitle } = useParams();
+  chooseMovie(movieTitle);
+
   const checkLists = (movieTitle, type) => {
     if (type === "favorite") {
       const isList = favoriteMovies.find((movie) => movie.title === movieTitle);
@@ -81,7 +86,9 @@ const MovieDetail = ({
           </section>
         </section>
         <div>
-          <p className="summary"><strong>Summary</strong></p>
+          <p className="summary">
+            <strong>Summary</strong>
+          </p>
           <p className="synopsis">{synopsis}</p>
         </div>
       </section>
