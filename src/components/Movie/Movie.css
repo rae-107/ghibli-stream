@@ -1,5 +1,5 @@
 .Movie {
-  width: 15vw;
+  width: 55vw;
   height: 40vh;
   display: flex;
   flex-direction: column;
@@ -12,6 +12,6 @@
 }
 
 .small-title {
-  width: 15vw;
+  width: 55vw;
   height: 2vh;
 }/*# sourceMappingURL=Movie.css.map */
