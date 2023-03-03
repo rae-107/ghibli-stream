@@ -3,13 +3,31 @@
   height: 20vh;
   width: 100vw;
   display: flex;
+  justify-content: space-between;
 }
 .Header a {
   margin: 0 10px;
+  display: flex;
+  align-items: center;
+}
+.Header a.active {
+  color: rgba(255, 254, 235, 0.6);
 }
 
 .logo {
-  width: 20vw;
+  width: 50vw;
   margin: 10px;
   height: 18vh;
+}
+
+.links {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.arrow {
+  height: 2vh;
+  width: 3vw;
 }/*# sourceMappingURL=Header.css.map */
