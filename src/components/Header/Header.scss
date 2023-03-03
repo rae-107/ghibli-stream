@@ -1,4 +1,4 @@
-@use '../../../abstract/variables' as *;
+@use "../../../abstract/variables" as *;
 
 .Header {
   background-color: $brownColor;
@@ -12,9 +12,9 @@
     align-items: center;
     cursor: pointer;
   }
-  
+
   a.active {
-    color: $creamColor
+    color: $creamColor;
   }
 }
 
@@ -24,14 +24,15 @@
   height: 18vh;
   cursor: pointer;
 }
- .links {
+
+.links {
   width: 30vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
- }
+}
 
- .arrow {
+.arrow {
   height: 2vh;
   width: 3vw;
 }
