@@ -12,7 +12,7 @@ const Header = () => {
       <NavLink to={'/'}>All Movies</NavLink>
       <NavLink to={'/favorites'}>Favorites</NavLink>
       <NavLink to={'/watched'}>Watched</NavLink>
-      <NavLink to={'/watch%20list'}>Watch List</NavLink>
+      <NavLink to={'/watchlist'}>Watch List</NavLink>
     </header>
   );
 };
