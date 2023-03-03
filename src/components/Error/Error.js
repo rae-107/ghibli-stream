@@ -10,13 +10,13 @@ const style = {
   backgroundAttachment: "fixed",
 };
 
-const Error = () => {
+const Error = ({ message }) => {
   return (
     <section className="Main">
     <Header />
     <section className="NoMovieDisplay" style={style}>
       <section className="center-no-movie-display">
-        <h2>Oh no! Something went wrong with the server. Please try again! </h2>
+        <h2>{message}</h2>
       </section>
     </section>
   </section>
