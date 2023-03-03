@@ -11,10 +11,10 @@ const Header = () => {
         <img alt="Studio Ghibli Logo" className="logo" src={logo} />
       </NavLink>
       <div className="links" >
-        <NavLink to={"/"}><img className="arrow" src={arrow} />All Movies</NavLink>
-        <NavLink to={"/favorites"}><img className="arrow" src={arrow} />Favorites</NavLink>
-        <NavLink to={"/watched"}><img className="arrow" src={arrow} />Watched</NavLink>
-        <NavLink to={"/watchlist"}><img className="arrow" src={arrow} />Watch List</NavLink>
+        <NavLink to={"/"}><img alt="Link to all movies" className="arrow" src={arrow} />All Movies</NavLink>
+        <NavLink to={"/favorites"}><img alt="Link to favorite movies" className="arrow" src={arrow} />Favorites</NavLink>
+        <NavLink to={"/watched"}><img alt="Link to watched movies" className="arrow" src={arrow} />Watched</NavLink>
+        <NavLink to={"/watchlist"}><img alt="Link to watch list" className="arrow" src={arrow} />Watch List</NavLink>
       </div>
     </header>
   );
