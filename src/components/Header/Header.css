@@ -4,6 +4,9 @@
   width: 100vw;
   display: flex;
 }
+.Header a {
+  margin: 0 10px;
+}
 
 .logo {
   width: 20vw;
