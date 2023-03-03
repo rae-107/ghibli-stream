@@ -48,10 +48,10 @@ const MovieDetail = ({
       <Header />
       <section className="center-movie-detail">
         <section className="poster-with-info">
-          <img alt={title} src={poster} className="large-poster" />
+          <img alt={`${title} poster`} src={poster} className="large-poster" />
           <section className="movie-info">
             <div className="top-movie-info">
-              <h2>{title}</h2>
+              <h1>{title}</h1>
               <div className="button-container">
                 <button
                   id={title}
@@ -74,21 +74,21 @@ const MovieDetail = ({
                 </button>
               </div>
             </div>
-            {genre && (<p><strong>Genre:</strong> {genre.split("/").join(" | ")}</p>)}
-            {release && (<p><strong>Release Date:</strong> {release}</p>)}
-            {rating && (<p><strong>Rating:</strong> {rating}</p>)}
-            {music && (<p><strong>Music:</strong> {music}</p>)}
-            {runtime !== 'TBA' && (<p><strong>Runtime:</strong> {runtime} mins</p>)}
-            {budget !== "N/A" && (<p><strong>Budget:</strong> ${budget}</p>)}
-            {boxOffice && (<p><strong>Box Office:</strong> ${boxOffice}</p>)}
-            {rottenTomatoes && (<p><strong>Rotten Tomatoes:</strong> {rottenTomatoes}</p>)}
-            {imdb && (<p><strong>IMDB:</strong> {imdb}</p>)}
+            {genre && (<h2><strong>Genre:</strong> {genre.split("/").join(" | ")}</h2>)}
+            {release && (<h2><strong>Release Date:</strong> {release}</h2>)}
+            {rating && (<h2><strong>Rating:</strong> {rating}</h2>)}
+            {music && (<h2><strong>Music:</strong> {music}</h2>)}
+            {runtime !== 'TBA' && (<h2><strong>Runtime:</strong> {runtime} mins</h2>)}
+            {budget !== "N/A" && (<h2><strong>Budget:</strong> ${budget}</h2>)}
+            {boxOffice && (<h2><strong>Box Office:</strong> ${boxOffice}</h2>)}
+            {rottenTomatoes && (<h2><strong>Rotten Tomatoes:</strong> {rottenTomatoes}</h2>)}
+            {imdb && (<h2><strong>IMDB:</strong> {imdb}</h2>)}
           </section>
         </section>
         <div>
-          <p className="summary">
+          <h2 className="summary">
             <strong>Summary</strong>
-          </p>
+          </h2>
           <p className="synopsis">{synopsis}</p>
         </div>
       </section>

@@ -36,10 +36,10 @@
   height: 60%;
   padding: 20px;
   justify-content: space-between;
-  h2 {
+  h1 {
     font-size: 40px;
   }
-  p {
+  h2 {
     font-size: 20px;
   }
 }
@@ -91,10 +91,10 @@ button {
 @media screen and (min-width: 1050px) {
   .movie-info {
     width: 400px;
-    h2 {
+    h1 {
       font-size: 50px;
     }
-    p {
+    h2 {
       font-size: 26px;
     }
   }

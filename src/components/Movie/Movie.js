@@ -18,7 +18,7 @@ const Movie = ({ id, title, poster, chooseMovie }) => {
           alt={`Click for more information about ${title}`}
           className="small-poster"
         />
-        <h3 id={title} className="small-title">{title}</h3>
+        <h1 id={title} className="small-title">{title}</h1>
       </section>
     </NavLink>
   );
