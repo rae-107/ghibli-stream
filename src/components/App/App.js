@@ -24,6 +24,7 @@ function App() {
       !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : ""
     );
     setunwatchedMovies(determineUnwatchedMovies);
+    // eslint-disable-next-line
   }, [watchedMovies]);
 
   const chooseMovie = (title) => {

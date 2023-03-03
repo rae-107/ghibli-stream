@@ -1,0 +1,34 @@
+{
+  "grave of the fireflies": {
+    "title": "Grave of the Fireflies",
+    "poster": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grave_of_the_Fireflies_Japanese_poster.jpg",
+    "genre": "War/Drama",
+    "rating": "Not Rated",
+    "release": "April 16, 1988",
+    "music": "Michio Mamiya",
+    "runtimeMinutes": "89",
+    "budgetUSD": "N/A",
+    "boxOfficeUSD": "516,962",
+    "synopsis": "A devastating meditation on the human cost of war, this animated tale follows Seita (Tsutomu Tatsumi), a teenager charged with the care of his younger sister, Setsuko (Ayano Shiraishi), after an American firebombing during World War II separates the two children from their parents. Their tale of survival is as heartbreaking as it is true to life. The siblings rely completely on each other and struggle against all odds to stay together and stay alive.",
+    "reviews": {
+      "rottenTomatoes": "100%",
+      "imdb": "8.5/10"
+    }
+  },
+  "my neighbor totoro": {
+    "title": "My Neighbor Totoro",
+    "poster": "https://upload.wikimedia.org/wikipedia/en/thumb/0/02/My_Neighbor_Totoro_-_Tonari_no_Totoro_%28Movie_Poster%29.jpg/220px-My_Neighbor_Totoro_-_Tonari_no_Totoro_%28Movie_Poster%29.jpg",
+    "genre": "Fantasy/Family",
+    "rating": "G",
+    "release": "April 16, 1988",
+    "music": "Joe Hisaishi",
+    "runtimeMinutes": "86",
+    "budgetUSD": "N/A",
+    "boxOfficeUSD": "41,000,000",
+    "synopsis": "When Satsuki and Mei move into their new home, they soon encounter strange and delightful creatures, including Totoro, a gentle forest spirit. Totoro takes them on a series of adventures in this deceptively simple, endearing tale.",
+    "reviews": {
+      "rottenTomatoes": "95%",
+      "imdb": "8.1/10"
+    }
+  }
+}
