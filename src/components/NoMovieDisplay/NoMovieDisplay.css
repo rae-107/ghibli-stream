@@ -1,0 +1,16 @@
+.NoMovieDisplay {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.center-no-movie-display {
+  background-color: rgba(255, 254, 235, 0.6);
+  width: 70vw;
+  row-gap: 10px;
+  padding: 10px;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+}/*# sourceMappingURL=NoMovieDisplay.css.map */
