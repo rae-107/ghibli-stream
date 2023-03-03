@@ -64,10 +64,11 @@ function App() {
           element={<Main chooseMovie={chooseMovie} movies={movies} />}
         />
         <Route
-          path="/details/:id"
+          path="/details/:movieTitle"
           element={
             selectedMovie.title && (
               <MovieDetail
+                chooseMovie={chooseMovie}
                 favoriteMovies={favoriteMovies}
                 watchedMovies={watchedMovies}
                 toggleFavorite={toggleFavorite}
