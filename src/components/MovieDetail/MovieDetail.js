@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Header/Header";
-import backdrop from "../../assests/forest.png";
+import backdrop from "../../assests/spirited-away-background.png";
 import "./MovieDetail.css";
 
 const style = {
@@ -88,7 +88,7 @@ const MovieDetail = ({
                 <strong>Music:</strong> {music}
               </p>
             )}
-            {runtime && (
+            {runtime !== 'TBA' && (
               <p>
                 <strong>Runtime:</strong> {runtime} mins
               </p>
