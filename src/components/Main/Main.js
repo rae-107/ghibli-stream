@@ -1,3 +1,4 @@
+import NoMovieDisplay from "../NoMovieDisplay/NoMovieDisplay";
 import MovieDisplay from "../MovieDisplay/MovieDisplay";
 import Header from "../Header/Header";
 import React from "react";
@@ -6,7 +7,7 @@ const Main = ({ chooseMovie, movies }) => {
   return (
     <section className="Main">
       <Header />
-      <MovieDisplay chooseMovie={chooseMovie} movies={movies} />
+      {movies.length ? <MovieDisplay chooseMovie={chooseMovie} movies={movies} /> : <NoMovieDisplay />}
     </section>
   );
 };
