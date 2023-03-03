@@ -4,6 +4,7 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import { apiCalls } from "../../apiCalls";
 import { convertObjectToArray } from "../../util";
+import Error from "../Error/Error";
 import MovieDetail from "../MovieDetail/MovieDetail";
 
 function App() {
@@ -12,9 +13,18 @@ function App() {
   const [unwatchedMovies, setunwatchedMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [watchedMovies, setWatchedMovies] = useState([]);
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    apiCalls().then((data) => setMovies(convertObjectToArray(data)));
+    apiCalls().then((data) => {
+      if( typeof data === 'string') {
+        console.log(data)
+        setError(data)
+      } else {
+        setMovies(convertObjectToArray(data))
+      }
+    });
+
     // eslint-disable-next-line
   }, [movies.length]);
 
@@ -56,12 +66,13 @@ function App() {
         );
   };
 
+  console.log(error)
   return (
     <main className="App">
       <Routes>
         <Route
           path="/"
-          element={<Main chooseMovie={chooseMovie} movies={movies} />}
+          element={error ? <Error /> : <Main chooseMovie={chooseMovie} movies={movies} />}
         />
         <Route
           path="/details/:movieTitle"
