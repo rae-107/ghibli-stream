@@ -1,19 +1,36 @@
-@use '../../../abstract/variables' as *;
+@use "../../../abstract/variables" as *;
 
 .MovieDisplay {
   height: 80vh;
   width: 100%;
   display: flex;
   justify-content: center;
-  
 }
 
 .center-movie-container {
   background-color: $creamColor;
   width: 70vw;
   display: grid;
-  grid-template-columns: auto ;
+  grid-template-columns: auto;
   padding: 10px;
   justify-content: space-evenly;
   overflow-y: scroll;
+}
+
+@media screen and (min-width: 700px) {
+  .center-movie-container {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .center-movie-container {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media screen and (min-width: 1450px) {
+  .center-movie-container {
+    grid-template-columns: auto auto auto auto;
+  }
 }
