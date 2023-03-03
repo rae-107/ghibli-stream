@@ -3,13 +3,48 @@
   height: 20vh;
   width: 100vw;
   display: flex;
+  justify-content: space-between;
 }
 .Header a {
   margin: 0 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.Header a.active {
+  color: rgba(255, 254, 235, 0.6);
 }
 
 .logo {
-  width: 20vw;
+  width: 240px;
   margin: 10px;
   height: 18vh;
+  cursor: pointer;
+}
+
+.links {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.arrow {
+  height: 16px;
+}
+
+@media screen and (min-width: 700px) {
+  .links {
+    width: 20vw;
+  }
+}
+@media screen and (min-width: 1050px) {
+  .links {
+    width: 15vw;
+  }
+}
+@media screen and (min-width: 1450px) {
+  .links {
+    width: 10vw;
+  }
 }/*# sourceMappingURL=Header.css.map */

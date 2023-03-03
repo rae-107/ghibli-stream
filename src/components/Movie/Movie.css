@@ -1,5 +1,5 @@
 .Movie {
-  width: 15vw;
+  width: 215px;
   height: 40vh;
   display: flex;
   flex-direction: column;
@@ -7,11 +7,11 @@
 }
 
 .small-poster {
-  width: 100%;
-  height: 90%;
+  width: 215px;
+  height: 300px;
 }
 
 .small-title {
-  width: 15vw;
+  width: 215px;
   height: 2vh;
 }/*# sourceMappingURL=Movie.css.map */

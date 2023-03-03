@@ -7,6 +7,7 @@ const style = {
   backgroundImage: `url(${backdrop})`,
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
+  backgroundAttachment: 'fixed'
 };
 
 const MovieDetail = ({
@@ -46,7 +47,7 @@ const MovieDetail = ({
           <section className="movie-info">
             <div className="top-movie-info">
               <h2>{title}</h2>
-              <div>
+              <div className="button-container">
                 <button
                   id={title}
                   onClick={(event) =>
@@ -68,55 +69,19 @@ const MovieDetail = ({
                 </button>
               </div>
             </div>
-            {genre && (
-              <p>
-                <strong>Genre:</strong> {genre.split("/").join(" | ")}
-              </p>
-            )}
-            {release && (
-              <p>
-                <strong>Release Date:</strong> {release}
-              </p>
-            )}
-            {rating && (
-              <p>
-                <strong>Rating:</strong> {rating}
-              </p>
-            )}
-            {music && (
-              <p>
-                <strong>Music:</strong> {music}
-              </p>
-            )}
-            {runtime !== 'TBA' && (
-              <p>
-                <strong>Runtime:</strong> {runtime} mins
-              </p>
-            )}
-            {budget !== "N/A" && (
-              <p>
-                <strong>Budget:</strong> ${budget}
-              </p>
-            )}
-            {boxOffice && (
-              <p>
-                <strong>boxOffice:</strong> ${boxOffice}
-              </p>
-            )}
-            {rottenTomatoes && (
-              <p>
-                <strong>Rotten Tomatoes:</strong> {rottenTomatoes}
-              </p>
-            )}
-            {imdb && (
-              <p>
-                <strong>IMDB:</strong> {imdb}
-              </p>
-            )}
+            {genre && (<p><strong>Genre:</strong> {genre.split("/").join(" | ")}</p>)}
+            {release && (<p><strong>Release Date:</strong> {release}</p>)}
+            {rating && (<p><strong>Rating:</strong> {rating}</p>)}
+            {music && (<p><strong>Music:</strong> {music}</p>)}
+            {runtime !== 'TBA' && (<p><strong>Runtime:</strong> {runtime} mins</p>)}
+            {budget !== "N/A" && (<p><strong>Budget:</strong> ${budget}</p>)}
+            {boxOffice && (<p><strong>boxOffice:</strong> ${boxOffice}</p>)}
+            {rottenTomatoes && (<p><strong>Rotten Tomatoes:</strong> {rottenTomatoes}</p>)}
+            {imdb && (<p><strong>IMDB:</strong> {imdb}</p>)}
           </section>
         </section>
         <div>
-          <p className="summary">Summary</p>
+          <p className="summary"><strong>Summary</strong></p>
           <p className="synopsis">{synopsis}</p>
         </div>
       </section>
