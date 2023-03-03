@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Header/Header";
-import backdrop from "../../assests/forest.png";
+import backdrop from "../../assests/spirited-away-background.png";
 import "./MovieDetail.css";
 
 const style = {
@@ -10,6 +10,10 @@ const style = {
 };
 
 const MovieDetail = ({
+  favoriteMovies,
+  watchedMovies,
+  toggleFavorite,
+  toggleWatched,
   title,
   poster,
   genre,
@@ -23,18 +27,45 @@ const MovieDetail = ({
   rottenTomatoes,
   imdb,
 }) => {
+  const checkLists = (movieTitle, type) => {
+    if (type === "favorite") {
+      const isList = favoriteMovies.find((movie) => movie.title === movieTitle);
+      return isList ? "Remove" : "Add";
+    } else {
+      const isList = watchedMovies.find((movie) => movie.title === movieTitle);
+      return isList ? "Remove" : "Add";
+    }
+  };
+
   return (
     <section className="MovieDetail" style={style}>
       <Header />
       <section className="center-movie-detail">
         <section className="poster-with-info">
-          <img src={poster} className="large-poster" />
+          <img alt={title} src={poster} className="large-poster" />
           <section className="movie-info">
             <div className="top-movie-info">
               <h2>{title}</h2>
               <div>
-                <button>Add To Favorites</button>
-                <button>Add To Watched</button>
+                <button
+                  id={title}
+                  onClick={(event) =>
+                    toggleFavorite(
+                      event.target.id,
+                      checkLists(title, "favorite")
+                    )
+                  }
+                >
+                  {checkLists(title, "favorite")} To Favorites
+                </button>
+                <button
+                  id={title}
+                  onClick={(event) =>
+                    toggleWatched(event.target.id, checkLists(title, "watched"))
+                  }
+                >
+                  {checkLists(title, "watched")} To Watched
+                </button>
               </div>
             </div>
             {genre && (
@@ -57,7 +88,7 @@ const MovieDetail = ({
                 <strong>Music:</strong> {music}
               </p>
             )}
-            {runtime && (
+            {runtime !== 'TBA' && (
               <p>
                 <strong>Runtime:</strong> {runtime} mins
               </p>
@@ -74,12 +105,12 @@ const MovieDetail = ({
             )}
             {rottenTomatoes && (
               <p>
-                <strong>Rotten Tomatoes:</strong> ${rottenTomatoes}
+                <strong>Rotten Tomatoes:</strong> {rottenTomatoes}
               </p>
             )}
             {imdb && (
               <p>
-                <strong>IMDB:</strong> ${imdb}
+                <strong>IMDB:</strong> {imdb}
               </p>
             )}
           </section>

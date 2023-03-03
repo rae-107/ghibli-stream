@@ -9,6 +9,10 @@ const Header = () => {
       <NavLink to={'/'} >
         <img className="logo" src={logo} />
       </NavLink>
+      <NavLink to={'/'}>All Movies</NavLink>
+      <NavLink to={'/favorites'}>Favorites</NavLink>
+      <NavLink to={'/watched'}>Watched</NavLink>
+      <NavLink to={'/watchlist'}>Watch List</NavLink>
     </header>
   );
 };
