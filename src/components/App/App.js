@@ -20,15 +20,15 @@ function App() {
 
   useEffect(() => {
     const determineUnwatchedMovies = [];
-    movies.forEach((movie) => !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : "");
+    movies.forEach((movie) =>
+      !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : ""
+    );
     setunwatchedMovies(determineUnwatchedMovies);
-    console.log(watchedMovies)
-    console.log(unwatchedMovies)
   }, [watchedMovies]);
 
-  const chooseMovie = (id) => {
+  const chooseMovie = (title) => {
     selectedMovie.title && setSelectedMovie({});
-    const findChoosenMovie = movies.find((movie, index) => index === +id);
+    const findChoosenMovie = movies.find((movie) => movie.title === title);
     setSelectedMovie(findChoosenMovie);
   };
 
@@ -45,7 +45,14 @@ function App() {
   };
 
   const toggleWatched = (title, action) => {
-    action === "Add" ? setWatchedMovies([...watchedMovies, movies.find((movie) => movie.title === title)]) : setWatchedMovies(watchedMovies.filter((movie) => movie.title !== title))
+    action === "Add"
+      ? setWatchedMovies([
+          ...watchedMovies,
+          movies.find((movie) => movie.title === title),
+        ])
+      : setWatchedMovies(
+          watchedMovies.filter((movie) => movie.title !== title)
+        );
   };
 
   return (
@@ -80,9 +87,17 @@ function App() {
             )
           }
         />
-        <Route path="/favorites" element={<Main movies={favoriteMovies} />} />
-        <Route path="/watched" element={<Main movies={watchedMovies} />} />
-        <Route path="/watchlist" element={<Main movies={unwatchedMovies} />}
+        <Route
+          path="/favorites"
+          element={<Main chooseMovie={chooseMovie} movies={favoriteMovies} />}
+        />
+        <Route
+          path="/watched"
+          element={<Main chooseMovie={chooseMovie} movies={watchedMovies} />}
+        />
+        <Route
+          path="/watchlist"
+          element={<Main chooseMovie={chooseMovie} movies={unwatchedMovies} />}
         />
         <Route path="*" />
       </Routes>
