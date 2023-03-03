@@ -1,20 +1,4 @@
 {
-  "castle in the sky": {
-    "title": "Castle in the sky",
-    "poster": "https://upload.wikimedia.org/wikipedia/en/f/f5/Castle_in_the_Sky_%281986%29.png",
-    "genre": "Fantasy/Adventure",
-    "rating": "PG",
-    "release": "August 2, 1986",
-    "music": "Joe Hisaishi",
-    "runtimeMinutes": "124",
-    "budgetUSD": "3,000,000",
-    "boxOfficeUSD": "16,000,000",
-    "synopsis": "A young girl with a mysterious pendant falls out of the sky and into the life of young Pazu. Together they search for an island in the sky, site of a civilization promising enormous wealth and power to those who can unlock its secrets.",
-    "reviews": {
-      "rottenTomatoes": "96%",
-      "imdb": "8/10"
-    }
-  },
   "grave of the fireflies": {
     "title": "Grave of the Fireflies",
     "poster": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grave_of_the_Fireflies_Japanese_poster.jpg",
