@@ -13,15 +13,14 @@ function App() {
   const [unwatchedMovies, setunwatchedMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [watchedMovies, setWatchedMovies] = useState([]);
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
 
   useEffect(() => {
     apiCalls().then((data) => {
-      if( typeof data === 'string') {
-        console.log(data)
-        setError(data)
+      if (typeof data === "string") {
+        setError(data);
       } else {
-        setMovies(convertObjectToArray(data))
+        setMovies(convertObjectToArray(data));
       }
     });
 
@@ -66,13 +65,19 @@ function App() {
         );
   };
 
-  console.log(error)
+  console.log(error);
   return (
     <main className="App">
       <Routes>
         <Route
           path="/"
-          element={error ? <Error /> : <Main chooseMovie={chooseMovie} movies={movies} />}
+          element={
+            error ? (
+              <Error message={'Oh no! Something went wrong with the server. Please try again!'} />
+            ) : (
+              <Main chooseMovie={chooseMovie} movies={movies} />
+            )
+          }
         />
         <Route
           path="/details/:movieTitle"
@@ -112,7 +117,7 @@ function App() {
           path="/watchlist"
           element={<Main chooseMovie={chooseMovie} movies={unwatchedMovies} />}
         />
-        <Route path="*" />
+        <Route path="*" element={<Error message={'404... Page Not Found. Click logo to return home.'} />} />
       </Routes>
     </main>
   );
