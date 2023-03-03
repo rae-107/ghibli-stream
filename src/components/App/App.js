@@ -18,6 +18,14 @@ function App() {
     // eslint-disable-next-line
   }, [movies.length]);
 
+  useEffect(() => {
+    const determineUnwatchedMovies = [];
+    movies.forEach((movie) => !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : "");
+    setunwatchedMovies(determineUnwatchedMovies);
+    console.log(watchedMovies)
+    console.log(unwatchedMovies)
+  }, [watchedMovies]);
+
   const chooseMovie = (id) => {
     selectedMovie.title && setSelectedMovie({});
     const findChoosenMovie = movies.find((movie, index) => index === +id);
@@ -37,24 +45,7 @@ function App() {
   };
 
   const toggleWatched = (title, action) => {
-    const determineUnwatchedMovies = [];
-    if (action === "Add") {
-      const findWatchedMovie = movies.find((movie) => movie.title === title);
-      setWatchedMovies([...watchedMovies, findWatchedMovie]);
-      movies.forEach((movie) =>
-        !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : ""
-      );
-      setunwatchedMovies(determineUnwatchedMovies);
-    } else {
-      const removeWatchedMovie = watchedMovies.filter(
-        (movie) => movie.title !== title
-      );
-      setWatchedMovies(removeWatchedMovie);
-      movies.forEach((movie) =>
-        !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : ""
-      );
-      setunwatchedMovies(determineUnwatchedMovies);
-    }
+    action === "Add" ? setWatchedMovies([...watchedMovies, movies.find((movie) => movie.title === title)]) : setWatchedMovies(watchedMovies.filter((movie) => movie.title !== title))
   };
 
   return (
@@ -91,9 +82,7 @@ function App() {
         />
         <Route path="/favorites" element={<Main movies={favoriteMovies} />} />
         <Route path="/watched" element={<Main movies={watchedMovies} />} />
-        <Route
-          path="/watch%20list"
-          element={<Main movies={unwatchedMovies} />}
+        <Route path="/watchlist" element={<Main movies={unwatchedMovies} />}
         />
         <Route path="*" />
       </Routes>
