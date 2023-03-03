@@ -21,7 +21,7 @@ function App() {
         setError(data);
       } else {
         setMovies(convertObjectToArray(data));
-        setunwatchedMovies(data)
+        setunwatchedMovies(movies)
       }
     });
 
