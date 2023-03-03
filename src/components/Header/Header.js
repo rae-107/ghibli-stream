@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className="Header">
       <NavLink to={"/"}>
-        <img className="logo" src={logo} />
+        <img alt="Studio Ghibli Logo" className="logo" src={logo} />
       </NavLink>
       <div className="links" >
         <NavLink to={"/"}><img className="arrow" src={arrow} />All Movies</NavLink>
