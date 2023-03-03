@@ -75,7 +75,7 @@ const MovieDetail = ({
             {music && (<p><strong>Music:</strong> {music}</p>)}
             {runtime !== 'TBA' && (<p><strong>Runtime:</strong> {runtime} mins</p>)}
             {budget !== "N/A" && (<p><strong>Budget:</strong> ${budget}</p>)}
-            {boxOffice && (<p><strong>boxOffice:</strong> ${boxOffice}</p>)}
+            {boxOffice && (<p><strong>Box Office:</strong> ${boxOffice}</p>)}
             {rottenTomatoes && (<p><strong>Rotten Tomatoes:</strong> {rottenTomatoes}</p>)}
             {imdb && (<p><strong>IMDB:</strong> {imdb}</p>)}
           </section>
