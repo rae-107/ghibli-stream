@@ -1,18 +1,18 @@
+import MovieDetail from "../MovieDetail/MovieDetail";
+import React, { useEffect, useState } from "react";
+import { convertObjectToArray } from "../../util";
 import { Routes, Route } from "react-router-dom";
+import { apiCalls } from "../../apiCalls";
+import Error from "../Error/Error";
 import Main from "../Main/Main";
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import { apiCalls } from "../../apiCalls";
-import { convertObjectToArray } from "../../util";
-import Error from "../Error/Error";
-import MovieDetail from "../MovieDetail/MovieDetail";
 
 function App() {
-  const [selectedMovie, setSelectedMovie] = useState({});
-  const [movies, setMovies] = useState([]);
   const [unwatchedMovies, setunwatchedMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [watchedMovies, setWatchedMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState({});
+  const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -21,10 +21,9 @@ function App() {
         setError(data);
       } else {
         setMovies(convertObjectToArray(data));
-        setunwatchedMovies(movies)
+        setunwatchedMovies(movies);
       }
     });
-
     // eslint-disable-next-line
   }, [movies.length]);
 
@@ -44,42 +43,26 @@ function App() {
   };
 
   const toggleFavorite = (title, action) => {
-    if (action === "Add") {
-      const findFavoriteMovie = movies.find((movie) => movie.title === title);
-      setFavoriteMovies([...favoriteMovies, findFavoriteMovie]);
-    } else {
-      const removeFavoritedMovie = favoriteMovies.filter(
-        (movie) => movie.title !== title
-      );
-      setFavoriteMovies(removeFavoritedMovie);
-    }
+    action === "Add" 
+    ? setFavoriteMovies([...favoriteMovies, movies.find((movie) => movie.title === title)])
+    : setFavoriteMovies(favoriteMovies.filter( (movie) => movie.title !== title));
   };
 
   const toggleWatched = (title, action) => {
     action === "Add"
-      ? setWatchedMovies([
-          ...watchedMovies,
-          movies.find((movie) => movie.title === title),
-        ])
-      : setWatchedMovies(
-          watchedMovies.filter((movie) => movie.title !== title)
-        );
+      ? setWatchedMovies([...watchedMovies, movies.find((movie) => movie.title === title)])
+      : setWatchedMovies(watchedMovies.filter((movie) => movie.title !== title));
   };
 
-  console.log(error);
   return (
     <main className="App">
       <Routes>
         <Route
           path="/"
           element={
-            error ? (
-              <Error message={'Oh no! Something went wrong with the server. Please try again!'} />
-            ) : (
-              <Main chooseMovie={chooseMovie} movies={movies} />
-            )
-          }
-        />
+            error 
+              ? (<Error message={"Oh no! Something went wrong with the server. Please try again!"}/>)
+              : (<Main chooseMovie={chooseMovie} movies={movies} />)} />
         <Route
           path="/details/:movieTitle"
           element={
@@ -118,7 +101,14 @@ function App() {
           path="/watchlist"
           element={<Main chooseMovie={chooseMovie} movies={unwatchedMovies} />}
         />
-        <Route path="*" element={<Error message={'404... Page Not Found. Click logo to return home.'} />} />
+        <Route
+          path="*"
+          element={
+            <Error
+              message={"404... Page Not Found. Click logo to return home."}
+            />
+          }
+        />
       </Routes>
     </main>
   );
