@@ -1,59 +1,55 @@
+import MovieDetail from "../MovieDetail/MovieDetail";
+import React, { useEffect, useState } from "react";
+import { convertObjectToArray } from "../../util";
 import { Routes, Route } from "react-router-dom";
+import { apiCalls } from "../../apiCalls";
+import Error from "../Error/Error";
 import Main from "../Main/Main";
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import { apiCalls } from "../../apiCalls";
-import { convertObjectToArray } from "../../util";
-import MovieDetail from "../MovieDetail/MovieDetail";
 
 function App() {
-  const [selectedMovie, setSelectedMovie] = useState({});
-  const [movies, setMovies] = useState([]);
   const [unwatchedMovies, setunwatchedMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [watchedMovies, setWatchedMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState({});
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    apiCalls().then((data) => setMovies(convertObjectToArray(data)));
+    apiCalls().then((data) => {
+      if (typeof data === "string") {
+        setError(data);
+      } else {
+        setMovies(convertObjectToArray(data));
+        setunwatchedMovies(movies);
+      }
+    });
     // eslint-disable-next-line
   }, [movies.length]);
 
   useEffect(() => {
     const determineUnwatchedMovies = [];
-    movies.forEach((movie) =>
-      !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : ""
-    );
+    movies.forEach((movie) => !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : "");
     setunwatchedMovies(determineUnwatchedMovies);
     // eslint-disable-next-line
   }, [watchedMovies]);
 
+
   const chooseMovie = (title) => {
-    selectedMovie.title && setSelectedMovie({});
-    const findChoosenMovie = movies.find((movie) => movie.title === title);
-    setSelectedMovie(findChoosenMovie);
+    setSelectedMovie(movies.find((movie) => movie.title === title));
   };
 
+
   const toggleFavorite = (title, action) => {
-    if (action === "Add") {
-      const findFavoriteMovie = movies.find((movie) => movie.title === title);
-      setFavoriteMovies([...favoriteMovies, findFavoriteMovie]);
-    } else {
-      const removeFavoritedMovie = favoriteMovies.filter(
-        (movie) => movie.title !== title
-      );
-      setFavoriteMovies(removeFavoritedMovie);
-    }
+    action === "Add"
+      ? setFavoriteMovies([...favoriteMovies, movies.find((movie) => movie.title === title)])
+      : setFavoriteMovies(favoriteMovies.filter((movie) => movie.title !== title));
   };
 
   const toggleWatched = (title, action) => {
     action === "Add"
-      ? setWatchedMovies([
-          ...watchedMovies,
-          movies.find((movie) => movie.title === title),
-        ])
-      : setWatchedMovies(
-          watchedMovies.filter((movie) => movie.title !== title)
-        );
+      ? setWatchedMovies([...watchedMovies, movies.find((movie) => movie.title === title)])
+      : setWatchedMovies(watchedMovies.filter((movie) => movie.title !== title));
   };
 
   return (
@@ -61,13 +57,16 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main chooseMovie={chooseMovie} movies={movies} />}
-        />
+          element={
+            error
+              ? (<Error message={"Oh no! Something went wrong with the server. Please try again!"} />)
+              : (<Main chooseMovie={chooseMovie} movies={movies} />)} />
         <Route
-          path="/details/:id"
+          path="/details/:movieTitle"
           element={
             selectedMovie.title && (
               <MovieDetail
+                chooseMovie={chooseMovie}
                 favoriteMovies={favoriteMovies}
                 watchedMovies={watchedMovies}
                 toggleFavorite={toggleFavorite}
@@ -100,7 +99,14 @@ function App() {
           path="/watchlist"
           element={<Main chooseMovie={chooseMovie} movies={unwatchedMovies} />}
         />
-        <Route path="*" />
+        <Route
+          path="*"
+          element={
+            <Error
+              message={"404... Page Not Found. Click logo to return home."}
+            />
+          }
+        />
       </Routes>
     </main>
   );

@@ -1,8 +1,8 @@
-import React from "react";
 import logo from "../../assests/Studio_Ghibli_logo.png";
-import "./Header.css";
-import { NavLink } from "react-router-dom";
 import arrow from '../../assests/angle-small-down.png'
+import { NavLink } from "react-router-dom";
+import React from "react";
+import "./Header.css";
 
 const Header = () => {
   return (

@@ -1,13 +1,14 @@
-import React from "react";
 import backdrop from "../../assests/spirited-away-background.png";
-import "./MovieDisplay.css";
+import PropTypes from "prop-types";
 import Movie from "../Movie/Movie";
+import "./MovieDisplay.css";
+import React from "react";
 
 const style = {
   backgroundImage: `url(${backdrop})`,
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
-  backgroundAttachment: 'fixed'
+  backgroundAttachment: "fixed",
 };
 
 const MovieDisplay = ({ movies, chooseMovie }) => {
@@ -15,7 +16,6 @@ const MovieDisplay = ({ movies, chooseMovie }) => {
     return movies.map((movie, index) => (
       <Movie
         key={index}
-        id={movie.title}
         poster={movie.poster}
         title={movie.title}
         chooseMovie={chooseMovie}
@@ -35,3 +35,8 @@ const MovieDisplay = ({ movies, chooseMovie }) => {
 };
 
 export default MovieDisplay;
+
+MovieDisplay.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  chooseMovie: PropTypes.func.isRequired
+}
