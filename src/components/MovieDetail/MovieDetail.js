@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Header from "../Header/Header";
 import PropTypes from "prop-types";
 import "./MovieDetail.css";
-import React from "react";
+import React, { useEffect } from "react";
 
 const style = {
   backgroundImage: `url(${backdrop})`,
@@ -32,7 +32,11 @@ const MovieDetail = ({
   imdb,
 }) => {
   const { movieTitle } = useParams();
-  chooseMovie(movieTitle);
+
+  useEffect(() => {
+    chooseMovie(movieTitle);
+     // eslint-disable-next-line
+  }, [title]);
 
   const checkLists = (movieTitle, type) => {
     if (type === "favorite") {
