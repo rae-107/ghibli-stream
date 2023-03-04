@@ -72,6 +72,7 @@
   
 ## Deployed Link
 
+[Deployed Link](https://ghibli-stream.vercel.app/)
 
 
 ---
