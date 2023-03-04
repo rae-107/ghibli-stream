@@ -1,8 +1,9 @@
-import React from "react";
-import Header from "../Header/Header";
 import backdrop from "../../assests/spirited-away-background.png";
-import "./MovieDetail.css";
 import { useParams } from "react-router-dom";
+import Header from "../Header/Header";
+import PropTypes from "prop-types";
+import "./MovieDetail.css";
+import React from "react";
 
 const style = {
   backgroundImage: `url(${backdrop})`,
@@ -97,3 +98,23 @@ const MovieDetail = ({
 };
 
 export default MovieDetail;
+
+MovieDetail.propTypes = {
+  chooseMovie: PropTypes.func.isRequired,
+  favoriteMovies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  watchedMovies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  toggleWatched: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired,
+  release: PropTypes.string.isRequired,
+  music: PropTypes.string.isRequired,
+  runtime: PropTypes.string.isRequired,
+  budget: PropTypes.string.isRequired,
+  boxOffice: PropTypes.string.isRequired,
+  synopsis: PropTypes.string.isRequired,
+  rottenTomatoes: PropTypes.string.isRequired,
+  imdb: PropTypes.string.isRequired,
+};
