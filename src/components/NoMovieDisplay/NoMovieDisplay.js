@@ -1,6 +1,6 @@
-import React from "react";
 import backdrop from "../../assests/spirited-away-background.png";
 import "./NoMovieDisplay.css";
+import React from "react";
 
 const style = {
   backgroundImage: `url(${backdrop})`,
