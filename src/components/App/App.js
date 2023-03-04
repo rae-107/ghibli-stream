@@ -29,23 +29,21 @@ function App() {
 
   useEffect(() => {
     const determineUnwatchedMovies = [];
-    movies.forEach((movie) =>
-      !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : ""
-    );
+    movies.forEach((movie) => !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : "");
     setunwatchedMovies(determineUnwatchedMovies);
     // eslint-disable-next-line
   }, [watchedMovies]);
 
 
-    const chooseMovie = (title) => {
-      setSelectedMovie(movies.find((movie) => movie.title === title));
-    };
+  const chooseMovie = (title) => {
+    setSelectedMovie(movies.find((movie) => movie.title === title));
+  };
 
 
   const toggleFavorite = (title, action) => {
-    action === "Add" 
-    ? setFavoriteMovies([...favoriteMovies, movies.find((movie) => movie.title === title)])
-    : setFavoriteMovies(favoriteMovies.filter( (movie) => movie.title !== title));
+    action === "Add"
+      ? setFavoriteMovies([...favoriteMovies, movies.find((movie) => movie.title === title)])
+      : setFavoriteMovies(favoriteMovies.filter((movie) => movie.title !== title));
   };
 
   const toggleWatched = (title, action) => {
@@ -60,8 +58,8 @@ function App() {
         <Route
           path="/"
           element={
-            error 
-              ? (<Error message={"Oh no! Something went wrong with the server. Please try again!"}/>)
+            error
+              ? (<Error message={"Oh no! Something went wrong with the server. Please try again!"} />)
               : (<Main chooseMovie={chooseMovie} movies={movies} />)} />
         <Route
           path="/details/:movieTitle"
