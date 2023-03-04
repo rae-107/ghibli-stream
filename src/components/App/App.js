@@ -36,11 +36,11 @@ function App() {
     // eslint-disable-next-line
   }, [watchedMovies]);
 
-  const chooseMovie = (title) => {
-    selectedMovie.title && setSelectedMovie({});
-    const findChoosenMovie = movies.find((movie) => movie.title === title);
-    setSelectedMovie(findChoosenMovie);
-  };
+
+    const chooseMovie = (title) => {
+      setSelectedMovie(movies.find((movie) => movie.title === title));
+    };
+
 
   const toggleFavorite = (title, action) => {
     action === "Add" 
