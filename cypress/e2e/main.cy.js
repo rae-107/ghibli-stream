@@ -48,5 +48,10 @@ describe('Main Page', () => {
   it('Should let you know to add movies to list if empty', () => {
     cy.get('.links > a').eq(1).click()
     cy.get('h2').contains('There are no movies found in this list. Try adding some!')
+  })  
+
+  it('Should direct you to an error page if the url isn\'t recognized', () => {
+    cy.visit('http://localhost:3000/123')
+    cy.get('h2').contains('404... Page Not Found. Click logo to return home.')
   })
 })
