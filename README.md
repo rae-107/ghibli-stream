@@ -38,9 +38,7 @@
 
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
 
-
-
- 
+Ghibli Stream is an adaptive React application that displays all the studio ghibli films. Users can search through all movies and click on each to show that movies details. Users can save a movie to their favorites list or watched list. There is an additional movie view of watch list that is all the movies that a user hasn't watched so that a user can better keep track of studio ghibli movies that they still need to watch. 
   
 </div>
 
@@ -80,9 +78,7 @@
 ## Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
- 
-
-
+ ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/113261334/222940826-2b080727-a6f3-4915-8e61-8ee094e6ad20.gif)
 
   
 
