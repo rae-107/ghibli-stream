@@ -17,5 +17,5 @@ export default Main;
 
 Main.propTypes = {
   chooseMovie: PropTypes.func.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired
+  movies: PropTypes.arrayOf(PropTypes.object)
 }
