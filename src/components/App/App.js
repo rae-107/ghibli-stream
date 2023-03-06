@@ -21,46 +21,93 @@ function App() {
         setError(data);
       } else {
         setMovies(convertObjectToArray(data));
-        setunwatchedMovies(movies);
       }
     });
     // eslint-disable-next-line
   }, [movies.length]);
 
   useEffect(() => {
-    const determineUnwatchedMovies = [];
-    movies.forEach((movie) => !watchedMovies.includes(movie) ? determineUnwatchedMovies.push(movie) : "");
-    setunwatchedMovies(determineUnwatchedMovies);
+    const allMovies = localStorage.getItem("allMovies");
+    const favorites = localStorage.getItem("favoriteMovies");
+    const watched = localStorage.getItem("watchedMovies");
+    const unwatched = localStorage.getItem("unwatchedMovies");
+    const watchedArray = JSON.parse(watched);
+    const movieArray = JSON.parse(allMovies);
+    const unwatchedMovies = generateUnwatched(movieArray, watchedArray);
+    if (favorites !== null) {
+      setFavoriteMovies(JSON.parse(favorites));
+    }
+    if (watched !== null) {
+      setWatchedMovies(JSON.parse(watched));
+    }
+    if (unwatched !== null) {
+      setunwatchedMovies(unwatchedMovies);
+    }
+    if (allMovies !== null) {
+      setMovies(JSON.parse(allMovies));
+    }
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("allMovies", JSON.stringify(movies));
+    localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies));
+    localStorage.setItem("watchedMovies", JSON.stringify(watchedMovies));
+    localStorage.setItem("unwatchedMovies", JSON.stringify(unwatchedMovies));
+  }, [favoriteMovies, watchedMovies, unwatchedMovies, movies]);
+
+  useEffect(() => {
+    const unwatchedMovies = generateUnwatched(movies, watchedMovies);
+    setunwatchedMovies(unwatchedMovies);
     // eslint-disable-next-line
   }, [watchedMovies]);
 
+  const generateUnwatched = (all, watched) => {
+    if(!all) {
+      return 
+    }
+    return all.filter((movie) => {
+      return !watched.find(
+        (watchedMovie) => watchedMovie.title === movie.title
+      );
+    });
+  };
 
   const chooseMovie = (title) => {
     setSelectedMovie(movies.find((movie) => movie.title === title));
   };
 
-
   const toggleFavorite = (title, action) => {
     action === "Add"
-      ? setFavoriteMovies([...favoriteMovies, movies.find((movie) => movie.title === title)])
-      : setFavoriteMovies(favoriteMovies.filter((movie) => movie.title !== title));
+      ? setFavoriteMovies([
+          ...favoriteMovies,
+          movies.find((movie) => movie.title === title),
+        ])
+      : setFavoriteMovies(
+          favoriteMovies.filter((movie) => movie.title !== title)
+        );
   };
 
   const toggleWatched = (title, action) => {
     action === "Add"
-      ? setWatchedMovies([...watchedMovies, movies.find((movie) => movie.title === title)])
-      : setWatchedMovies(watchedMovies.filter((movie) => movie.title !== title));
+      ? setWatchedMovies([
+          ...watchedMovies,
+          movies.find((movie) => movie.title === title),
+        ])
+      : setWatchedMovies(
+          watchedMovies.filter((movie) => movie.title !== title)
+        );
   };
 
   return (
     <main className="App">
       <Routes>
-        <Route
+      <Route
           path="/"
           element={
             error
-              ? (<Error message={"Oh no! Something went wrong with the server. Please try again!"} />)
-              : (<Main chooseMovie={chooseMovie} movies={movies} />)} />
+            ? (<Error message={"Oh no! Something went wrong with the server. Please try again!"} />)
+            : (<Main chooseMovie={chooseMovie} movies={movies} />)} />
         <Route
           path="/details/:movieTitle"
           element={
