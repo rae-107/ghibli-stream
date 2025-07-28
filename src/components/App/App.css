@@ -1,0 +1,13 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.background {
+  height: 100vh;
+  background-image: url("/when-marnie-was-there.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
